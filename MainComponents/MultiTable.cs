@@ -6,19 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace SlonitTEST
+namespace SlonitTEST.Components
 {
-    class MultiTable (int multiplier)
+    class MultiTable
     {
-        private int maxSymb = (multiplier * multiplier).ToString().Length;
+        private int multiplier;
+        private int maxSymb;
+        public MultiTable(int mult)
+        {
+            if (mult < 1) throw new Exception();
+            this.multiplier = mult;
+            this.maxSymb = (multiplier * multiplier).ToString().Length;
+        }
+        
         private string FillSpaces(string inputString)
         {
-            //while (inputString.Length < maxSymb + 1)
-            //{
-            //    inputString = " " + inputString;
-            //}
-            inputString = inputString.PadLeft(maxSymb+1);
-            return inputString;           
+            inputString = inputString.PadLeft(maxSymb + 1);
+            return inputString;
         }
 
         public void ShowInConsole()
